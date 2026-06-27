@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danh sách khóa học | Tín Chỉ</title>
+<meta name="description" content="Khám phá toàn bộ khóa học trên Tín Chỉ: Công nghệ, Dữ liệu, Thiết kế, Marketing, Kinh doanh. Lọc theo lĩnh vực và cấp độ phù hợp với bạn.">
+<meta property="og:title" content="Danh sách khóa học | Tín Chỉ">
+<meta property="og:description" content="Lọc khóa học theo lĩnh vực và cấp độ, tìm khóa học phù hợp với mục tiêu học tập của bạn.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%231F3A2E%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23D9A441%22 font-family=%22serif%22>T</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: { colors: {
+      inkgreen:'#1F3A2E', inkgreenlight:'#2C5240', parchment:'#F6F3EC',
+      parchmentdeep:'#EEE8D9', mustard:'#D9A441', clay:'#B5482E', charcoal:'#2B2924', sage:'#B9C4AE'
+    }, fontFamily: { display:['"Source Serif 4"','Georgia','serif'], mono:['"JetBrains Mono"','monospace'] } } }
+  }
+</script>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans text-charcoal">
+
+<header class="sticky top-0 z-40 bg-parchment/95 backdrop-blur border-b border-sage/60">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between" aria-label="Điều hướng chính">
+    <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl text-inkgreen">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="5" fill="#1F3A2E"/><path d="M8 9h12M8 14h12M8 19h7" stroke="#D9A441" stroke-width="1.6" stroke-linecap="round"/></svg>
+      TÍN CHỈ
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <li><a href="index.html" class="ink-link hover:text-inkgreen">Trang chủ</a></li>
+      <li><a href="courses.html" class="ink-link text-inkgreen" aria-current="page">Khóa học</a></li>
+      <li><a href="progress.html" class="ink-link hover:text-inkgreen">Tiến độ của tôi</a></li>
+      <li><a href="contact.html" class="ink-link hover:text-inkgreen">Liên hệ</a></li>
+    </ul>
+    <div class="hidden md:flex items-center gap-4" id="auth-slot">
+      <a href="auth.html" class="ink-link text-sm font-medium hover:text-inkgreen">Đăng nhập</a>
+      <a href="auth.html#register" class="text-sm font-semibold bg-inkgreen text-parchment px-4 py-2 rounded-sm hover:bg-inkgreenlight transition">Đăng ký miễn phí</a>
+    </div>
+    <button id="nav-toggle" aria-expanded="false" aria-label="Mở menu điều hướng" class="md:hidden p-2 text-inkgreen">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<div id="nav-overlay" class="hidden fixed inset-0 bg-charcoal/40 z-40"></div>
+<aside id="mobile-nav" class="fixed top-0 right-0 h-full w-72 bg-parchment z-50 shadow-2xl p-6 flex flex-col gap-6" aria-label="Menu di động">
+  <div class="flex items-center justify-between">
+    <span class="font-display font-bold text-lg text-inkgreen">Menu</span>
+    <button id="nav-close" aria-label="Đóng menu" class="p-1 text-inkgreen">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <ul class="flex flex-col gap-4 text-base font-medium">
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="courses.html" class="text-inkgreen">Khóa học</a></li>
+    <li><a href="progress.html">Tiến độ của tôi</a></li>
+    <li><a href="contact.html">Liên hệ</a></li>
+  </ul>
+  <div class="mt-auto flex flex-col gap-3 ledger-rule pt-6">
+    <a href="auth.html" class="text-center border border-inkgreen text-inkgreen py-2 rounded-sm font-medium">Đăng nhập</a>
+    <a href="auth.html#register" class="text-center bg-inkgreen text-parchment py-2 rounded-sm font-medium">Đăng ký miễn phí</a>
+  </div>
+</aside>
+
+<main class="max-w-7xl mx-auto px-5 sm:px-8 py-12">
+  <header class="mb-8">
+    <p class="code-chip mb-3 inline-block">MỤC LỤC KHÓA HỌC</p>
+    <h1 class="font-display text-3xl sm:text-4xl font-bold text-inkgreen">Tất cả khóa học</h1>
+    <p class="text-charcoal/70 mt-2 max-w-2xl">Lọc theo lĩnh vực, cấp độ hoặc tìm theo từ khóa để chọn đúng khóa học phù hợp với mục tiêu của bạn.</p>
+  </header>
+
+  <!-- ===== Bộ lọc ===== -->
+  <section aria-label="Bộ lọc khóa học" class="bg-white border border-sage rounded-sm p-5 mb-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div>
+      <label for="search-input" class="block text-xs font-semibold uppercase tracking-wide text-charcoal/60 mb-1">Tìm kiếm</label>
+      <input id="search-input" type="search" placeholder="Tên khóa học, mã môn…" class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen">
+    </div>
+    <div>
+      <label for="field-filter" class="block text-xs font-semibold uppercase tracking-wide text-charcoal/60 mb-1">Lĩnh vực</label>
+      <select id="field-filter" class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen bg-white">
+        <option value="">Tất cả lĩnh vực</option>
+        <option value="Công nghệ">Công nghệ</option>
+        <option value="Dữ liệu">Dữ liệu</option>
+        <option value="Thiết kế">Thiết kế</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Kinh doanh">Kinh doanh</option>
+      </select>
+    </div>
+    <div>
+      <label for="level-filter" class="block text-xs font-semibold uppercase tracking-wide text-charcoal/60 mb-1">Cấp độ</label>
+      <select id="level-filter" class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen bg-white">
+        <option value="">Tất cả cấp độ</option>
+        <option value="Cơ bản">Cơ bản</option>
+        <option value="Trung cấp">Trung cấp</option>
+        <option value="Nâng cao">Nâng cao</option>
+      </select>
+    </div>
+    <div>
+      <label for="sort-select" class="block text-xs font-semibold uppercase tracking-wide text-charcoal/60 mb-1">Sắp xếp</label>
+      <select id="sort-select" class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen bg-white">
+        <option value="popular">Phổ biến nhất</option>
+        <option value="rating">Đánh giá cao nhất</option>
+        <option value="duration-asc">Thời lượng: ngắn → dài</option>
+        <option value="duration-desc">Thời lượng: dài → ngắn</option>
+      </select>
+    </div>
+  </section>
+
+  <p id="result-count" class="text-sm text-charcoal/60 mb-5" role="status" aria-live="polite"></p>
+
+  <div id="course-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="skeleton h-80 rounded-sm"></div>
+    <div class="skeleton h-80 rounded-sm"></div>
+    <div class="skeleton h-80 rounded-sm"></div>
+    <div class="skeleton h-80 rounded-sm hidden sm:block"></div>
+    <div class="skeleton h-80 rounded-sm hidden sm:block"></div>
+    <div class="skeleton h-80 rounded-sm hidden lg:block"></div>
+  </div>
+
+  <div id="empty-state" class="hidden text-center py-16">
+    <p class="font-display text-xl font-semibold text-inkgreen mb-2">Không tìm thấy khóa học phù hợp</p>
+    <p class="text-sm text-charcoal/60 mb-4">Hãy thử đổi từ khóa hoặc bỏ bớt bộ lọc.</p>
+    <button id="reset-filters" class="text-sm font-semibold text-inkgreen border border-inkgreen px-4 py-2 rounded-sm hover:bg-inkgreen hover:text-parchment transition">Xóa toàn bộ bộ lọc</button>
+  </div>
+</main>
+
+<footer class="bg-parchmentdeep border-t border-sage/60">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-10 text-center text-xs text-charcoal/60">
+    © <span class="current-year"></span> Tín Chỉ — Dự án học thuật, môn Thiết kế Web (INTE03010).
+  </div>
+</footer>
+
+<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-white border-2 px-5 py-3 rounded-sm shadow-xl text-sm font-medium z-50" role="status" aria-live="polite">
+  <span id="toast-text"></span>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+  let allCourses = [];
+
+  function renderCourses(list){
+    const grid = document.getElementById('course-grid');
+    const empty = document.getElementById('empty-state');
+    document.getElementById('result-count').textContent = `${list.length} khóa học được tìm thấy`;
+    if(list.length === 0){
+      grid.innerHTML = '';
+      empty.classList.remove('hidden');
+      return;
+    }
+    empty.classList.add('hidden');
+    grid.innerHTML = list.map(c => `
+      <a href="course-detail.html?id=${c.id}" class="course-card block bg-white border border-sage rounded-sm overflow-hidden perforated">
+        <img src="${c.thumbnail}" alt="Ảnh minh họa khóa học ${c.title}" class="w-full h-40 object-cover" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center justify-between mb-2">
+            <span class="code-chip">${c.code}</span>
+            <span class="text-xs bg-parchmentdeep px-2 py-0.5 rounded-sm">${c.level}</span>
+          </div>
+          <h3 class="font-display font-semibold text-lg leading-snug mb-1">${c.title}</h3>
+          <p class="text-xs text-charcoal/60 mb-3">${c.field} · ${c.duration} giờ · ★ ${c.rating}</p>
+          <p class="text-sm text-charcoal/70 line-clamp-2">${c.shortDesc}</p>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  function applyFilters(){
+    const q = document.getElementById('search-input').value.trim().toLowerCase();
+    const field = document.getElementById('field-filter').value;
+    const level = document.getElementById('level-filter').value;
+    const sort = document.getElementById('sort-select').value;
+
+    let result = allCourses.filter(c => {
+      const matchQ = !q || c.title.toLowerCase().includes(q) || c.code.toLowerCase().includes(q) || c.instructor.toLowerCase().includes(q);
+      const matchField = !field || c.field === field;
+      const matchLevel = !level || c.level === level;
+      return matchQ && matchField && matchLevel;
+    });
+
+    if(sort === 'popular') result.sort((a,b) => b.students - a.students);
+    if(sort === 'rating') result.sort((a,b) => b.rating - a.rating);
+    if(sort === 'duration-asc') result.sort((a,b) => a.duration - b.duration);
+    if(sort === 'duration-desc') result.sort((a,b) => b.duration - a.duration);
+
+    renderCourses(result);
+  }
+
+  async function init(){
+    try{
+      const res = await fetch('assets/data/courses.json');
+      if(!res.ok) throw new Error('Lỗi tải dữ liệu');
+      allCourses = await res.json();
+
+      // Đọc query string để áp bộ lọc/tìm kiếm sẵn từ trang chủ
+      const params = new URLSearchParams(window.location.search);
+      if(params.get('field')) document.getElementById('field-filter').value = params.get('field');
+      if(params.get('q')) document.getElementById('search-input').value = params.get('q');
+
+      applyFilters();
+    }catch(err){
+      document.getElementById('course-grid').innerHTML = `<p class="text-sm text-clay col-span-full">Không thể tải danh sách khóa học. Vui lòng kiểm tra kết nối và thử lại.</p>`;
+      console.error(err);
+    }
+  }
+
+  ['search-input','field-filter','level-filter','sort-select'].forEach(id => {
+    document.getElementById(id).addEventListener('input', applyFilters);
+    document.getElementById(id).addEventListener('change', applyFilters);
+  });
+  document.getElementById('reset-filters').addEventListener('click', () => {
+    document.getElementById('search-input').value = '';
+    document.getElementById('field-filter').value = '';
+    document.getElementById('level-filter').value = '';
+    document.getElementById('sort-select').value = 'popular';
+    applyFilters();
+  });
+
+  init();
+</script>
+</body>
+</html>

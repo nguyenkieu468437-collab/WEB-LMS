@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tín Chỉ — Nền tảng học trực tuyến | Mỗi bài học, một dòng trong học bạ của bạn</title>
+<meta name="description" content="Tín Chỉ là nền tảng học trực tuyến: khóa học Công nghệ, Dữ liệu, Thiết kế, Marketing, Kinh doanh. Học theo lộ trình, theo dõi tiến độ như một bảng điểm thật.">
+<meta property="og:title" content="Tín Chỉ — Nền tảng học trực tuyến">
+<meta property="og:description" content="Học theo lộ trình rõ ràng, theo dõi tiến độ như một bảng điểm thật. Khám phá khóa học Công nghệ, Dữ liệu, Thiết kế, Marketing, Kinh doanh.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://picsum.photos/seed/tinchi-og/1200/630">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%231F3A2E%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23D9A441%22 font-family=%22serif%22>T</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: { colors: {
+      inkgreen:'#1F3A2E', inkgreenlight:'#2C5240', parchment:'#F6F3EC',
+      parchmentdeep:'#EEE8D9', mustard:'#D9A441', clay:'#B5482E', charcoal:'#2B2924', sage:'#B9C4AE'
+    }, fontFamily: { display:['"Source Serif 4"','Georgia','serif'], mono:['"JetBrains Mono"','monospace'] } } }
+  }
+</script>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans text-charcoal">
+
+<!-- ===== Header ===== -->
+<header class="sticky top-0 z-40 bg-parchment/95 backdrop-blur border-b border-sage/60">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between" aria-label="Điều hướng chính">
+    <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl text-inkgreen">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="5" fill="#1F3A2E"/><path d="M8 9h12M8 14h12M8 19h7" stroke="#D9A441" stroke-width="1.6" stroke-linecap="round"/></svg>
+      TÍN CHỈ
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <li><a href="index.html" class="ink-link text-inkgreen" aria-current="page">Trang chủ</a></li>
+      <li><a href="courses.html" class="ink-link hover:text-inkgreen">Khóa học</a></li>
+      <li><a href="progress.html" class="ink-link hover:text-inkgreen">Tiến độ của tôi</a></li>
+      <li><a href="contact.html" class="ink-link hover:text-inkgreen">Liên hệ</a></li>
+    </ul>
+    <div class="hidden md:flex items-center gap-4" id="auth-slot">
+      <a href="auth.html" class="ink-link text-sm font-medium hover:text-inkgreen">Đăng nhập</a>
+      <a href="auth.html#register" class="text-sm font-semibold bg-inkgreen text-parchment px-4 py-2 rounded-sm hover:bg-inkgreenlight transition">Đăng ký miễn phí</a>
+    </div>
+    <button id="nav-toggle" aria-expanded="false" aria-label="Mở menu điều hướng" class="md:hidden p-2 text-inkgreen">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<!-- ===== Mobile nav drawer ===== -->
+<div id="nav-overlay" class="hidden fixed inset-0 bg-charcoal/40 z-40"></div>
+<aside id="mobile-nav" class="fixed top-0 right-0 h-full w-72 bg-parchment z-50 shadow-2xl p-6 flex flex-col gap-6" aria-label="Menu di động">
+  <div class="flex items-center justify-between">
+    <span class="font-display font-bold text-lg text-inkgreen">Menu</span>
+    <button id="nav-close" aria-label="Đóng menu" class="p-1 text-inkgreen">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <ul class="flex flex-col gap-4 text-base font-medium">
+    <li><a href="index.html" class="text-inkgreen">Trang chủ</a></li>
+    <li><a href="courses.html">Khóa học</a></li>
+    <li><a href="progress.html">Tiến độ của tôi</a></li>
+    <li><a href="contact.html">Liên hệ</a></li>
+  </ul>
+  <div class="mt-auto flex flex-col gap-3 ledger-rule pt-6">
+    <a href="auth.html" class="text-center border border-inkgreen text-inkgreen py-2 rounded-sm font-medium">Đăng nhập</a>
+    <a href="auth.html#register" class="text-center bg-inkgreen text-parchment py-2 rounded-sm font-medium">Đăng ký miễn phí</a>
+  </div>
+</aside>
+
+<main>
+  <!-- ===== Hero ===== -->
+  <section class="paper-grain border-b border-sage/60">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="code-chip mb-5 inline-block">HỌC-KỲ 2026</p>
+        <h1 class="font-display text-4xl sm:text-5xl leading-[1.1] text-inkgreen font-bold">
+          Mỗi bài học,<br> một dòng trong<br> học bạ của bạn.
+        </h1>
+        <p class="mt-6 text-lg text-charcoal/80 max-w-md">
+          Tín Chỉ là nền tảng học trực tuyến theo lộ trình rõ ràng — học xong bài nào, đóng dấu bài đó, tiến độ hiện ra như một bảng điểm thật.
+        </p>
+        <form id="hero-search-form" class="mt-8 flex flex-col sm:flex-row gap-3 max-w-lg" role="search" aria-label="Tìm khóa học">
+          <label for="hero-search" class="sr-only">Tìm khóa học theo từ khóa</label>
+          <input id="hero-search" type="search" placeholder="Tìm khóa học: ví dụ “JavaScript”, “UX”…"
+            class="flex-1 px-4 py-3 rounded-sm border border-sage bg-white/70 focus:bg-white outline-none text-sm">
+          <button type="submit" class="bg-mustard text-inkgreen font-semibold px-6 py-3 rounded-sm hover:brightness-95 transition text-sm">Tìm khóa học</button>
+        </form>
+        <div class="mt-10 flex gap-8">
+          <div><p class="font-display text-2xl font-bold text-inkgreen">9</p><p class="text-xs uppercase tracking-wide text-charcoal/60">Khóa học</p></div>
+          <div><p class="font-display text-2xl font-bold text-inkgreen">11.000+</p><p class="text-xs uppercase tracking-wide text-charcoal/60">Học viên</p></div>
+          <div><p class="font-display text-2xl font-bold text-inkgreen">4.7/5</p><p class="text-xs uppercase tracking-wide text-charcoal/60">Đánh giá TB</p></div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="bg-white border border-sage rounded-sm shadow-xl p-6 rotate-1">
+          <p class="font-mono text-xs text-charcoal/50 mb-3">BẢNG ĐIỂM — HỌC VIÊN MẪU</p>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between ledger-rule pb-2">
+              <span class="text-sm font-medium">WEB-301 · Front-end cơ bản</span>
+              <span class="stamp text-[0.5rem]">XONG</span>
+            </div>
+            <div class="flex items-center justify-between ledger-rule pb-2">
+              <span class="text-sm font-medium">UX-150 · Thiết kế UI/UX</span>
+              <span class="stamp text-[0.5rem]">XONG</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-medium text-charcoal/50">DS-204 · Phân tích dữ liệu</span>
+              <span class="stamp is-empty text-[0.5rem]">ĐANG HỌC</span>
+            </div>
+          </div>
+        </div>
+        <img src="https://picsum.photos/seed/tinchi-hero/420/300" alt="Học viên đang học trực tuyến trên laptop" class="absolute -bottom-8 -left-8 w-44 sm:w-56 rounded-sm shadow-lg border-4 border-parchment hidden sm:block" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Lĩnh vực học tập ===== -->
+  <section class="max-w-7xl mx-auto px-5 sm:px-8 py-16" aria-labelledby="fields-heading">
+    <div class="flex items-end justify-between flex-wrap gap-4 mb-8">
+      <div>
+        <p class="code-chip mb-3 inline-block">MỤC LỤC</p>
+        <h2 id="fields-heading" class="font-display text-3xl font-bold text-inkgreen">Chọn lĩnh vực bạn muốn theo</h2>
+      </div>
+      <a href="courses.html" class="ink-link text-sm font-semibold text-inkgreen">Xem toàn bộ khóa học →</a>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+      <a href="courses.html?field=Công nghệ" class="group border border-sage rounded-sm p-5 bg-white hover:border-inkgreen transition">
+        <span class="text-2xl">💻</span>
+        <p class="font-semibold mt-3 text-sm">Công nghệ</p>
+        <p class="text-xs text-charcoal/60 mt-1">2 khóa học</p>
+      </a>
+      <a href="courses.html?field=Dữ liệu" class="group border border-sage rounded-sm p-5 bg-white hover:border-inkgreen transition">
+        <span class="text-2xl">📊</span>
+        <p class="font-semibold mt-3 text-sm">Dữ liệu</p>
+        <p class="text-xs text-charcoal/60 mt-1">2 khóa học</p>
+      </a>
+      <a href="courses.html?field=Thiết kế" class="group border border-sage rounded-sm p-5 bg-white hover:border-inkgreen transition">
+        <span class="text-2xl">🎨</span>
+        <p class="font-semibold mt-3 text-sm">Thiết kế</p>
+        <p class="text-xs text-charcoal/60 mt-1">2 khóa học</p>
+      </a>
+      <a href="courses.html?field=Marketing" class="group border border-sage rounded-sm p-5 bg-white hover:border-inkgreen transition">
+        <span class="text-2xl">📣</span>
+        <p class="font-semibold mt-3 text-sm">Marketing</p>
+        <p class="text-xs text-charcoal/60 mt-1">2 khóa học</p>
+      </a>
+      <a href="courses.html?field=Kinh doanh" class="group border border-sage rounded-sm p-5 bg-white hover:border-inkgreen transition">
+        <span class="text-2xl">📈</span>
+        <p class="font-semibold mt-3 text-sm">Kinh doanh</p>
+        <p class="text-xs text-charcoal/60 mt-1">1 khóa học</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== Khóa học nổi bật ===== -->
+  <section class="bg-parchmentdeep/60 border-y border-sage/60 py-16" aria-labelledby="featured-heading">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <p class="code-chip mb-3 inline-block">ĐƯỢC HỌC NHIỀU NHẤT</p>
+      <h2 id="featured-heading" class="font-display text-3xl font-bold text-inkgreen mb-8">Khóa học nổi bật học kỳ này</h2>
+      <div id="featured-courses" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="skeleton h-80 rounded-sm"></div>
+        <div class="skeleton h-80 rounded-sm hidden sm:block"></div>
+        <div class="skeleton h-80 rounded-sm hidden lg:block"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Vì sao chọn Tín Chỉ ===== -->
+  <section class="max-w-7xl mx-auto px-5 sm:px-8 py-16" aria-labelledby="why-heading">
+    <p class="code-chip mb-3 inline-block">LÝ DO</p>
+    <h2 id="why-heading" class="font-display text-3xl font-bold text-inkgreen mb-10">Vì sao học viên chọn Tín Chỉ</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="border-l-2 border-mustard pl-5">
+        <p class="font-mono text-xs text-charcoal/50 mb-2">01</p>
+        <h3 class="font-display text-xl font-semibold mb-2">Tiến độ rõ như bảng điểm</h3>
+        <p class="text-sm text-charcoal/70">Mỗi bài học hoàn thành được "đóng dấu" vào học bạ cá nhân, không còn cảm giác học mà không biết mình đang ở đâu.</p>
+      </div>
+      <div class="border-l-2 border-mustard pl-5">
+        <p class="font-mono text-xs text-charcoal/50 mb-2">02</p>
+        <h3 class="font-display text-xl font-semibold mb-2">Giảng viên thực chiến</h3>
+        <p class="text-sm text-charcoal/70">Đội ngũ giảng viên đang làm việc trong ngành, nội dung cập nhật theo nhu cầu tuyển dụng thực tế.</p>
+      </div>
+      <div class="border-l-2 border-mustard pl-5">
+        <p class="font-mono text-xs text-charcoal/50 mb-2">03</p>
+        <h3 class="font-display text-xl font-semibold mb-2">Học theo tốc độ của bạn</h3>
+        <p class="text-sm text-charcoal/70">Toàn bộ bài giảng có thể học lại bất cứ lúc nào, tiến độ được lưu lại tự động trên thiết bị của bạn.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="bg-inkgreen text-parchment">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold">Sẵn sàng mở học bạ của riêng bạn?</h2>
+        <p class="text-parchment/80 mt-2 text-sm">Đăng ký miễn phí, chọn khóa học đầu tiên và bắt đầu tích lũy tín chỉ ngay hôm nay.</p>
+      </div>
+      <a href="auth.html#register" class="bg-mustard text-inkgreen font-semibold px-6 py-3 rounded-sm hover:brightness-95 transition whitespace-nowrap">Đăng ký miễn phí</a>
+    </div>
+  </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="bg-parchmentdeep border-t border-sage/60">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-12 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+    <div>
+      <p class="font-display font-bold text-lg text-inkgreen mb-3">TÍN CHỈ</p>
+      <p class="text-sm text-charcoal/70">Nền tảng học trực tuyến giúp bạn tích lũy kỹ năng theo lộ trình rõ ràng, có thể theo dõi từng bước.</p>
+    </div>
+    <div>
+      <p class="font-semibold text-sm mb-3">Khám phá</p>
+      <ul class="space-y-2 text-sm text-charcoal/70">
+        <li><a href="courses.html" class="ink-link">Tất cả khóa học</a></li>
+        <li><a href="progress.html" class="ink-link">Tiến độ của tôi</a></li>
+        <li><a href="auth.html" class="ink-link">Đăng nhập / Đăng ký</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold text-sm mb-3">Hỗ trợ</p>
+      <ul class="space-y-2 text-sm text-charcoal/70">
+        <li><a href="contact.html" class="ink-link">Liên hệ</a></li>
+        <li><a href="contact.html#faq" class="ink-link">Câu hỏi thường gặp</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold text-sm mb-3">Bài tập lớn</p>
+      <p class="text-sm text-charcoal/70">Sản phẩm thực hiện cho môn Thiết kế Web (INTE03010) — ĐỀ14: Website khóa học online / LMS. Giao diện tham khảo: EduPress — Online Courses & E-Learning (Figma Community).</p>
+    </div>
+  </div>
+  <div class="border-t border-sage/60 py-5 text-center text-xs text-charcoal/60">
+    © <span class="current-year"></span> Tín Chỉ. Dự án học thuật — không phục vụ mục đích thương mại.
+  </div>
+</footer>
+
+<!-- ===== Toast ===== -->
+<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-white border-2 px-5 py-3 rounded-sm shadow-xl text-sm font-medium z-50" role="status" aria-live="polite">
+  <span id="toast-text"></span>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+  async function loadFeatured(){
+    const wrap = document.getElementById('featured-courses');
+    try{
+      const res = await fetch('assets/data/courses.json');
+      if(!res.ok) throw new Error('Không tải được dữ liệu khóa học');
+      const courses = await res.json();
+      const top = [...courses].sort((a,b) => b.students - a.students).slice(0,3);
+      wrap.innerHTML = top.map(c => `
+        <a href="course-detail.html?id=${c.id}" class="course-card block bg-white border border-sage rounded-sm overflow-hidden perforated">
+          <img src="${c.thumbnail}" alt="Ảnh minh họa khóa học ${c.title}" class="w-full h-40 object-cover" loading="lazy">
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="code-chip">${c.code}</span>
+              <span class="text-xs text-charcoal/60">★ ${c.rating}</span>
+            </div>
+            <h3 class="font-display font-semibold text-lg leading-snug mb-1">${c.title}</h3>
+            <p class="text-xs text-charcoal/60">${c.instructor} · ${c.duration} giờ học</p>
+          </div>
+        </a>
+      `).join('');
+    }catch(err){
+      wrap.innerHTML = `<p class="text-sm text-clay">Không thể tải khóa học nổi bật lúc này. Vui lòng thử lại sau.</p>`;
+      console.error(err);
+    }
+  }
+  loadFeatured();
+
+  document.getElementById('hero-search-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const q = document.getElementById('hero-search').value.trim();
+    window.location.href = 'courses.html' + (q ? ('?q=' + encodeURIComponent(q)) : '');
+  });
+</script>
+</body>
+</html>

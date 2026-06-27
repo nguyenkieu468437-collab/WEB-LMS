@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liên hệ | Tín Chỉ</title>
+<meta name="description" content="Liên hệ với Tín Chỉ để được hỗ trợ về khóa học, tài khoản hoặc hợp tác giảng dạy. Xem câu hỏi thường gặp.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%231F3A2E%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23D9A441%22 font-family=%22serif%22>T</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: { colors: {
+      inkgreen:'#1F3A2E', inkgreenlight:'#2C5240', parchment:'#F6F3EC',
+      parchmentdeep:'#EEE8D9', mustard:'#D9A441', clay:'#B5482E', charcoal:'#2B2924', sage:'#B9C4AE'
+    }, fontFamily: { display:['"Source Serif 4"','Georgia','serif'], mono:['"JetBrains Mono"','monospace'] } } }
+  }
+</script>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans text-charcoal">
+
+<header class="sticky top-0 z-40 bg-parchment/95 backdrop-blur border-b border-sage/60">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between" aria-label="Điều hướng chính">
+    <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl text-inkgreen">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="5" fill="#1F3A2E"/><path d="M8 9h12M8 14h12M8 19h7" stroke="#D9A441" stroke-width="1.6" stroke-linecap="round"/></svg>
+      TÍN CHỈ
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <li><a href="index.html" class="ink-link hover:text-inkgreen">Trang chủ</a></li>
+      <li><a href="courses.html" class="ink-link hover:text-inkgreen">Khóa học</a></li>
+      <li><a href="progress.html" class="ink-link hover:text-inkgreen">Tiến độ của tôi</a></li>
+      <li><a href="contact.html" class="ink-link text-inkgreen" aria-current="page">Liên hệ</a></li>
+    </ul>
+    <div class="hidden md:flex items-center gap-4" id="auth-slot">
+      <a href="auth.html" class="ink-link text-sm font-medium hover:text-inkgreen">Đăng nhập</a>
+      <a href="auth.html#register" class="text-sm font-semibold bg-inkgreen text-parchment px-4 py-2 rounded-sm hover:bg-inkgreenlight transition">Đăng ký miễn phí</a>
+    </div>
+    <button id="nav-toggle" aria-expanded="false" aria-label="Mở menu điều hướng" class="md:hidden p-2 text-inkgreen">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<div id="nav-overlay" class="hidden fixed inset-0 bg-charcoal/40 z-40"></div>
+<aside id="mobile-nav" class="fixed top-0 right-0 h-full w-72 bg-parchment z-50 shadow-2xl p-6 flex flex-col gap-6" aria-label="Menu di động">
+  <div class="flex items-center justify-between">
+    <span class="font-display font-bold text-lg text-inkgreen">Menu</span>
+    <button id="nav-close" aria-label="Đóng menu" class="p-1 text-inkgreen">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <ul class="flex flex-col gap-4 text-base font-medium">
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="courses.html">Khóa học</a></li>
+    <li><a href="progress.html">Tiến độ của tôi</a></li>
+    <li><a href="contact.html" class="text-inkgreen">Liên hệ</a></li>
+  </ul>
+</aside>
+
+<main class="max-w-5xl mx-auto px-5 sm:px-8 py-12">
+  <header class="mb-10">
+    <p class="code-chip mb-3 inline-block">VĂN PHÒNG HỖ TRỢ</p>
+    <h1 class="font-display text-3xl sm:text-4xl font-bold text-inkgreen">Liên hệ với Tín Chỉ</h1>
+    <p class="text-charcoal/70 mt-2 max-w-2xl">Có câu hỏi về khóa học, tài khoản hoặc muốn trở thành giảng viên? Gửi cho chúng tôi một dòng nhắn.</p>
+  </header>
+
+  <div class="grid md:grid-cols-2 gap-10 mb-16">
+    <!-- Form liên hệ -->
+    <form id="contact-form" novalidate class="bg-white border border-sage rounded-sm p-6 space-y-4">
+      <div>
+        <label for="contact-name" class="block text-sm font-medium mb-1">Họ và tên</label>
+        <input id="contact-name" type="text" required minlength="2" class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen" placeholder="Nguyễn Văn A">
+        <p class="error-text hidden text-xs text-clay mt-1" data-for="contact-name"></p>
+      </div>
+      <div>
+        <label for="contact-email" class="block text-sm font-medium mb-1">Email</label>
+        <input id="contact-email" type="email" required class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen" placeholder="ban@email.com">
+        <p class="error-text hidden text-xs text-clay mt-1" data-for="contact-email"></p>
+      </div>
+      <div>
+        <label for="contact-topic" class="block text-sm font-medium mb-1">Chủ đề</label>
+        <select id="contact-topic" class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen bg-white">
+          <option>Hỏi về khóa học</option>
+          <option>Vấn đề tài khoản</option>
+          <option>Trở thành giảng viên</option>
+          <option>Góp ý sản phẩm</option>
+        </select>
+      </div>
+      <div>
+        <label for="contact-message" class="block text-sm font-medium mb-1">Nội dung</label>
+        <textarea id="contact-message" required minlength="10" rows="4" class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen" placeholder="Nội dung bạn muốn gửi…"></textarea>
+        <p class="error-text hidden text-xs text-clay mt-1" data-for="contact-message"></p>
+      </div>
+      <button type="submit" class="w-full bg-inkgreen text-parchment font-semibold py-3 rounded-sm hover:bg-inkgreenlight transition text-sm">Gửi liên hệ</button>
+      <p class="text-xs text-center text-charcoal/50">Đây là biểu mẫu minh họa cho mục đích học tập, không gửi đến máy chủ thật.</p>
+    </form>
+
+    <!-- Thông tin & bản đồ -->
+    <div class="space-y-6">
+      <div class="bg-white border border-sage rounded-sm p-6">
+        <h2 class="font-display text-lg font-semibold mb-3">Thông tin liên hệ</h2>
+        <ul class="text-sm text-charcoal/70 space-y-2">
+          <li>📍 97 Võ Văn Tần, Quận 3, TP. Hồ Chí Minh</li>
+          <li>✉️ hotro@tinchi.edu.vn</li>
+          <li>📞 (028) 3930 0000</li>
+          <li>🕘 Thứ 2 – Thứ 6, 8:00 – 17:30</li>
+        </ul>
+      </div>
+      <div class="rounded-sm overflow-hidden border border-sage h-64">
+        <iframe
+          title="Bản đồ vị trí văn phòng Tín Chỉ"
+          class="w-full h-full"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Tr%C6%B0%E1%BB%9Dng%20%C4%90%E1%BA%A1i%20h%E1%BB%8Dc%20M%E1%BB%9F%20TP.HCM&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section id="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="font-display text-2xl font-bold text-inkgreen mb-4">Câu hỏi thường gặp</h2>
+    <div id="faq-accordion" class="border border-sage rounded-sm divide-y divide-sage bg-white">
+      <div>
+        <button class="accordion-trigger w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-semibold text-sm" aria-expanded="false" aria-controls="faq-1">
+          <span>Khóa học trên Tín Chỉ có mất phí không?</span>
+          <svg class="accordion-chevron flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="faq-1" class="accordion-panel" style="max-height:0px">
+          <p class="px-5 pb-4 text-sm text-charcoal/70">Toàn bộ khóa học trong dự án minh họa này đều miễn phí. Đây là sản phẩm học thuật phục vụ môn Thiết kế Web, không thu phí người dùng.</p>
+        </div>
+      </div>
+      <div>
+        <button class="accordion-trigger w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-semibold text-sm" aria-expanded="false" aria-controls="faq-2">
+          <span>Tiến độ học của tôi được lưu ở đâu?</span>
+          <svg class="accordion-chevron flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="faq-2" class="accordion-panel" style="max-height:0px">
+          <p class="px-5 pb-4 text-sm text-charcoal/70">Tiến độ được lưu bằng localStorage ngay trên trình duyệt bạn đang dùng. Nếu đổi máy hoặc xóa dữ liệu trình duyệt, tiến độ sẽ không còn.</p>
+        </div>
+      </div>
+      <div>
+        <button class="accordion-trigger w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-semibold text-sm" aria-expanded="false" aria-controls="faq-3">
+          <span>Tôi có thể học lại bài đã hoàn thành không?</span>
+          <svg class="accordion-chevron flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="faq-3" class="accordion-panel" style="max-height:0px">
+          <p class="px-5 pb-4 text-sm text-charcoal/70">Có. Bạn có thể vào lại bất kỳ bài học nào từ trang chi tiết khóa học hoặc từ danh sách bài giảng trong trang học, không giới hạn số lần xem.</p>
+        </div>
+      </div>
+      <div>
+        <button class="accordion-trigger w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-semibold text-sm" aria-expanded="false" aria-controls="faq-4">
+          <span>Làm sao để trở thành giảng viên trên Tín Chỉ?</span>
+          <svg class="accordion-chevron flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="faq-4" class="accordion-panel" style="max-height:0px">
+          <p class="px-5 pb-4 text-sm text-charcoal/70">Gửi thông tin qua biểu mẫu liên hệ ở trên với chủ đề "Trở thành giảng viên", nhóm phát triển sẽ phản hồi qua email.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-parchmentdeep border-t border-sage/60 mt-14">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-10 text-center text-xs text-charcoal/60">
+    © <span class="current-year"></span> Tín Chỉ — Dự án học thuật, môn Thiết kế Web (INTE03010).
+  </div>
+</footer>
+
+<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-white border-2 px-5 py-3 rounded-sm shadow-xl text-sm font-medium z-50" role="status" aria-live="polite">
+  <span id="toast-text"></span>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+  initAccordionGroup('#faq-accordion');
+
+  function setError(inputId, message){
+    const errEl = document.querySelector(`.error-text[data-for="${inputId}"]`);
+    const input = document.getElementById(inputId);
+    if(!errEl) return;
+    if(message){
+      errEl.textContent = message;
+      errEl.classList.remove('hidden');
+      input?.classList.add('border-clay');
+    }else{
+      errEl.classList.add('hidden');
+      input?.classList.remove('border-clay');
+    }
+  }
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+    let valid = true;
+
+    if(name.length < 2){ setError('contact-name', 'Vui lòng nhập họ tên đầy đủ.'); valid = false; }
+    else setError('contact-name', '');
+
+    if(!emailPattern.test(email)){ setError('contact-email', 'Vui lòng nhập email hợp lệ.'); valid = false; }
+    else setError('contact-email', '');
+
+    if(message.length < 10){ setError('contact-message', 'Nội dung cần tối thiểu 10 ký tự.'); valid = false; }
+    else setError('contact-message', '');
+
+    if(!valid) return;
+
+    showToast('Đã gửi liên hệ! Chúng tôi sẽ phản hồi trong 24 giờ.');
+    e.target.reset();
+  });
+</script>
+</body>
+</html>

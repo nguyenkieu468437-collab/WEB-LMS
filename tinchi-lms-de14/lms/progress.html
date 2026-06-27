@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Học bạ của tôi | Tín Chỉ</title>
+<meta name="description" content="Theo dõi tiến độ học tập của bạn trên Tín Chỉ — xem các khóa học đã đăng ký, bài học đã hoàn thành dưới dạng học bạ trực quan.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%231F3A2E%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23D9A441%22 font-family=%22serif%22>T</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: { colors: {
+      inkgreen:'#1F3A2E', inkgreenlight:'#2C5240', parchment:'#F6F3EC',
+      parchmentdeep:'#EEE8D9', mustard:'#D9A441', clay:'#B5482E', charcoal:'#2B2924', sage:'#B9C4AE'
+    }, fontFamily: { display:['"Source Serif 4"','Georgia','serif'], mono:['"JetBrains Mono"','monospace'] } } }
+  }
+</script>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans text-charcoal">
+
+<header class="sticky top-0 z-40 bg-parchment/95 backdrop-blur border-b border-sage/60">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between" aria-label="Điều hướng chính">
+    <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl text-inkgreen">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="5" fill="#1F3A2E"/><path d="M8 9h12M8 14h12M8 19h7" stroke="#D9A441" stroke-width="1.6" stroke-linecap="round"/></svg>
+      TÍN CHỈ
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <li><a href="index.html" class="ink-link hover:text-inkgreen">Trang chủ</a></li>
+      <li><a href="courses.html" class="ink-link hover:text-inkgreen">Khóa học</a></li>
+      <li><a href="progress.html" class="ink-link text-inkgreen" aria-current="page">Tiến độ của tôi</a></li>
+      <li><a href="contact.html" class="ink-link hover:text-inkgreen">Liên hệ</a></li>
+    </ul>
+    <div class="hidden md:flex items-center gap-4" id="auth-slot">
+      <a href="auth.html" class="ink-link text-sm font-medium hover:text-inkgreen">Đăng nhập</a>
+      <a href="auth.html#register" class="text-sm font-semibold bg-inkgreen text-parchment px-4 py-2 rounded-sm hover:bg-inkgreenlight transition">Đăng ký miễn phí</a>
+    </div>
+    <button id="nav-toggle" aria-expanded="false" aria-label="Mở menu điều hướng" class="md:hidden p-2 text-inkgreen">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<div id="nav-overlay" class="hidden fixed inset-0 bg-charcoal/40 z-40"></div>
+<aside id="mobile-nav" class="fixed top-0 right-0 h-full w-72 bg-parchment z-50 shadow-2xl p-6 flex flex-col gap-6" aria-label="Menu di động">
+  <div class="flex items-center justify-between">
+    <span class="font-display font-bold text-lg text-inkgreen">Menu</span>
+    <button id="nav-close" aria-label="Đóng menu" class="p-1 text-inkgreen">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <ul class="flex flex-col gap-4 text-base font-medium">
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="courses.html">Khóa học</a></li>
+    <li><a href="progress.html" class="text-inkgreen">Tiến độ của tôi</a></li>
+    <li><a href="contact.html">Liên hệ</a></li>
+  </ul>
+</aside>
+
+<main class="max-w-5xl mx-auto px-5 sm:px-8 py-12">
+  <header class="mb-8">
+    <p class="code-chip mb-3 inline-block">HỌC BẠ CÁ NHÂN</p>
+    <h1 class="font-display text-3xl sm:text-4xl font-bold text-inkgreen">Tiến độ học tập của tôi</h1>
+    <p class="text-charcoal/70 mt-2 max-w-2xl">Toàn bộ tiến độ được lưu tự động trên thiết bị này (localStorage), giống như một bảng điểm cá nhân theo từng môn học.</p>
+  </header>
+
+  <div id="loading-state" class="space-y-4">
+    <div class="skeleton h-24 rounded-sm"></div>
+    <div class="skeleton h-40 rounded-sm"></div>
+  </div>
+
+  <div id="transcript-content" class="hidden">
+    <!-- Tổng quan -->
+    <section class="bg-white border border-sage rounded-sm p-6 mb-8 grid sm:grid-cols-3 gap-6 paper-grain">
+      <div>
+        <p class="text-xs uppercase tracking-wide text-charcoal/60">Khóa học đã đăng ký</p>
+        <p id="stat-enrolled" class="font-display text-3xl font-bold text-inkgreen mt-1">0</p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-wide text-charcoal/60">Bài học đã hoàn thành</p>
+        <p id="stat-lessons" class="font-display text-3xl font-bold text-inkgreen mt-1">0</p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-wide text-charcoal/60">Khóa học đã hoàn tất</p>
+        <p id="stat-completed" class="font-display text-3xl font-bold text-inkgreen mt-1">0</p>
+      </div>
+    </section>
+
+    <!-- Bảng điểm -->
+    <section aria-labelledby="transcript-heading">
+      <h2 id="transcript-heading" class="font-display text-2xl font-bold text-inkgreen mb-4">Bảng điểm chi tiết</h2>
+      <div id="transcript-list" class="space-y-4"></div>
+    </section>
+  </div>
+
+  <div id="empty-state" class="hidden text-center py-20 bg-white border border-dashed border-sage rounded-sm">
+    <p class="font-display text-2xl font-bold text-inkgreen mb-2">Học bạ của bạn còn trống</p>
+    <p class="text-sm text-charcoal/60 mb-5">Hãy chọn một khóa học và học bài đầu tiên để bắt đầu tích lũy tín chỉ.</p>
+    <a href="courses.html" class="inline-block bg-inkgreen text-parchment font-semibold px-6 py-3 rounded-sm hover:bg-inkgreenlight transition text-sm">Khám phá khóa học</a>
+  </div>
+</main>
+
+<footer class="bg-parchmentdeep border-t border-sage/60 mt-10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-10 text-center text-xs text-charcoal/60">
+    © <span class="current-year"></span> Tín Chỉ — Dự án học thuật, môn Thiết kế Web (INTE03010).
+  </div>
+</footer>
+
+<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-white border-2 px-5 py-3 rounded-sm shadow-xl text-sm font-medium z-50" role="status" aria-live="polite">
+  <span id="toast-text"></span>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+  async function init(){
+    try{
+      const res = await fetch('assets/data/courses.json');
+      if(!res.ok) throw new Error('Lỗi tải dữ liệu');
+      const allCourses = await res.json();
+      const enrollIds = LMS_STORE.getEnrollments();
+      const progressMap = LMS_STORE.getProgress();
+
+      document.getElementById('loading-state').classList.add('hidden');
+
+      if(enrollIds.length === 0){
+        document.getElementById('empty-state').classList.remove('hidden');
+        return;
+      }
+
+      const enrolled = enrollIds.map(id => allCourses.find(c => c.id === id)).filter(Boolean);
+      let totalLessonsDone = 0, fullyCompleted = 0;
+
+      const cards = enrolled.map(c => {
+        const total = c.syllabus.reduce((s,ch) => s + ch.lessons.length, 0);
+        const done = (progressMap[c.id] || []).length;
+        totalLessonsDone += done;
+        const pct = total ? Math.round((done/total)*100) : 0;
+        if(pct === 100) fullyCompleted++;
+
+        const stamps = c.syllabus.flatMap(ch => ch.lessons).map(l => {
+          const isDone = (progressMap[c.id] || []).includes(l.id);
+          return `<span class="stamp ${isDone ? '' : 'is-empty'} text-[0.5rem]" title="${l.title}">${isDone ? 'XONG' : '···'}</span>`;
+        }).join('');
+
+        return `
+          <article class="bg-white border border-sage rounded-sm p-6 perforated">
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <span class="code-chip mb-2 inline-block">${c.code}</span>
+                <h3 class="font-display text-xl font-semibold leading-snug">${c.title}</h3>
+                <p class="text-xs text-charcoal/60 mt-1">${c.field} · ${c.level} · Giảng viên: ${c.instructor}</p>
+              </div>
+              ${pct === 100 ? `<span class="text-xs font-mono bg-inkgreen text-parchment px-3 py-1 rounded-sm whitespace-nowrap">✓ HOÀN TẤT</span>` : ''}
+            </div>
+            <div class="mt-4">
+              <div class="flex justify-between text-xs mb-1.5"><span>${done}/${total} bài học</span><span class="font-mono">${pct}%</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4">${stamps}</div>
+            <a href="course-detail.html?id=${c.id}" class="inline-block mt-4 text-sm font-semibold ink-link text-inkgreen">Xem chi tiết khóa học →</a>
+          </article>
+        `;
+      }).join('');
+
+      document.getElementById('transcript-list').innerHTML = cards;
+      document.getElementById('stat-enrolled').textContent = enrolled.length;
+      document.getElementById('stat-lessons').textContent = totalLessonsDone;
+      document.getElementById('stat-completed').textContent = fullyCompleted;
+      document.getElementById('transcript-content').classList.remove('hidden');
+    }catch(err){
+      document.getElementById('loading-state').classList.add('hidden');
+      document.getElementById('empty-state').classList.remove('hidden');
+      console.error(err);
+    }
+  }
+  init();
+</script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+/* =========================================================
+   LMS "Học Bạ Số" — Stylesheet dùng chung cho toàn bộ trang
+   Design tokens: xem README.md để biết bảng màu & font đầy đủ
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root{
+  --ink-green: #1F3A2E;
+  --ink-green-light: #2C5240;
+  --parchment: #F6F3EC;
+  --parchment-deep: #EEE8D9;
+  --mustard: #D9A441;
+  --clay: #B5482E;
+  --charcoal: #2B2924;
+  --sage: #B9C4AE;
+}
+
+html{ scroll-behavior: smooth; }
+
+body{
+  background-color: var(--parchment);
+  color: var(--charcoal);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.font-display{ font-family: 'Source Serif 4', Georgia, serif; }
+.font-mono{ font-family: 'JetBrains Mono', monospace; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+/* Paper texture for hero sections */
+.paper-grain{
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(43,41,36,0.035) 1px, transparent 0);
+  background-size: 14px 14px;
+}
+
+/* Ledger rule — hairline divider used like a notebook line */
+.ledger-rule{
+  border-bottom: 1px dashed var(--sage);
+}
+
+/* Course-code chip */
+.code-chip{
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink-green);
+  background: rgba(31,58,46,0.08);
+  border: 1px solid rgba(31,58,46,0.18);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+
+/* Perforated card edge — mimics a torn ticket / catalog card */
+.perforated{
+  position: relative;
+}
+.perforated::after{
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 1px;
+  background-image: radial-gradient(circle, var(--parchment) 1.5px, transparent 1.6px);
+  background-size: 10px 1px;
+  background-repeat: repeat-x;
+}
+
+/* Stamp seal — used to mark completed lessons on transcript */
+.stamp{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 9999px;
+  border: 2px solid var(--clay);
+  color: var(--clay);
+  transform: rotate(-8deg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-align: center;
+  line-height: 1.1;
+  flex-shrink: 0;
+}
+.stamp.is-empty{
+  border-style: dashed;
+  border-color: var(--sage);
+  color: var(--sage);
+  transform: none;
+}
+
+/* Progress bar track */
+.progress-track{
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--parchment-deep);
+  overflow: hidden;
+}
+.progress-fill{
+  height: 100%;
+  background: linear-gradient(90deg, var(--mustard), var(--clay));
+  border-radius: 9999px;
+  transition: width 0.5s ease;
+}
+
+/* Accordion chevron rotation */
+.accordion-trigger[aria-expanded="true"] .accordion-chevron{
+  transform: rotate(180deg);
+}
+.accordion-chevron{
+  transition: transform 0.25s ease;
+}
+.accordion-panel{
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* Skeleton loading shimmer */
+.skeleton{
+  background: linear-gradient(90deg, var(--parchment-deep) 25%, #f9f6ee 37%, var(--parchment-deep) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+@keyframes shimmer{
+  0%{ background-position: 100% 50%; }
+  100%{ background-position: 0 50%; }
+}
+
+/* Mobile nav drawer */
+#mobile-nav{
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+#mobile-nav.open{
+  transform: translateX(0);
+}
+
+/* Toast */
+#toast{
+  transform: translateY(120%);
+  transition: transform 0.35s ease;
+}
+#toast.show{
+  transform: translateY(0);
+}
+
+/* Card hover lift */
+.course-card{
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.course-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(31,58,46,0.25);
+}
+
+/* Underline link signature */
+.ink-link{
+  position: relative;
+}
+.ink-link::after{
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.ink-link:hover::after{
+  transform: scaleX(1);
+}

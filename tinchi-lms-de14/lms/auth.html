@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng nhập / Đăng ký | Tín Chỉ</title>
+<meta name="description" content="Đăng nhập hoặc tạo tài khoản miễn phí trên Tín Chỉ để bắt đầu lưu tiến độ học tập của bạn.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%231F3A2E%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%23D9A441%22 font-family=%22serif%22>T</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: { colors: {
+      inkgreen:'#1F3A2E', inkgreenlight:'#2C5240', parchment:'#F6F3EC',
+      parchmentdeep:'#EEE8D9', mustard:'#D9A441', clay:'#B5482E', charcoal:'#2B2924', sage:'#B9C4AE'
+    }, fontFamily: { display:['"Source Serif 4"','Georgia','serif'], mono:['"JetBrains Mono"','monospace'] } } }
+  }
+</script>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans text-charcoal">
+
+<header class="sticky top-0 z-40 bg-parchment/95 backdrop-blur border-b border-sage/60">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between" aria-label="Điều hướng chính">
+    <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl text-inkgreen">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="5" fill="#1F3A2E"/><path d="M8 9h12M8 14h12M8 19h7" stroke="#D9A441" stroke-width="1.6" stroke-linecap="round"/></svg>
+      TÍN CHỈ
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <li><a href="index.html" class="ink-link hover:text-inkgreen">Trang chủ</a></li>
+      <li><a href="courses.html" class="ink-link hover:text-inkgreen">Khóa học</a></li>
+      <li><a href="progress.html" class="ink-link hover:text-inkgreen">Tiến độ của tôi</a></li>
+      <li><a href="contact.html" class="ink-link hover:text-inkgreen">Liên hệ</a></li>
+    </ul>
+    <div class="hidden md:flex items-center gap-4" id="auth-slot"></div>
+    <button id="nav-toggle" aria-expanded="false" aria-label="Mở menu điều hướng" class="md:hidden p-2 text-inkgreen">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<div id="nav-overlay" class="hidden fixed inset-0 bg-charcoal/40 z-40"></div>
+<aside id="mobile-nav" class="fixed top-0 right-0 h-full w-72 bg-parchment z-50 shadow-2xl p-6 flex flex-col gap-6" aria-label="Menu di động">
+  <div class="flex items-center justify-between">
+    <span class="font-display font-bold text-lg text-inkgreen">Menu</span>
+    <button id="nav-close" aria-label="Đóng menu" class="p-1 text-inkgreen">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <ul class="flex flex-col gap-4 text-base font-medium">
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="courses.html">Khóa học</a></li>
+    <li><a href="progress.html">Tiến độ của tôi</a></li>
+    <li><a href="contact.html">Liên hệ</a></li>
+  </ul>
+</aside>
+
+<main class="max-w-md mx-auto px-5 py-14">
+  <div class="text-center mb-8">
+    <p class="code-chip mb-3 inline-block">PHIẾU ĐĂNG KÝ HỌC VIÊN</p>
+    <h1 class="font-display text-3xl font-bold text-inkgreen">Chào mừng đến Tín Chỉ</h1>
+    <p class="text-sm text-charcoal/60 mt-2">Đăng nhập hoặc tạo tài khoản để lưu tiến độ học tập của bạn.</p>
+  </div>
+
+  <div class="bg-white border border-sage rounded-sm p-1 flex gap-1 mb-6" role="tablist" aria-label="Chọn đăng nhập hoặc đăng ký">
+    <button id="tab-login" role="tab" aria-selected="true" aria-controls="panel-login" class="flex-1 py-2 rounded-sm text-sm font-semibold bg-inkgreen text-parchment transition">Đăng nhập</button>
+    <button id="tab-register" role="tab" aria-selected="false" aria-controls="panel-register" class="flex-1 py-2 rounded-sm text-sm font-semibold text-charcoal/70 transition">Đăng ký</button>
+  </div>
+
+  <!-- Đăng nhập -->
+  <form id="panel-login" role="tabpanel" aria-labelledby="tab-login" class="bg-white border border-sage rounded-sm p-6 space-y-4" novalidate>
+    <div>
+      <label for="login-email" class="block text-sm font-medium mb-1">Email</label>
+      <input id="login-email" type="email" autocomplete="email" required class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen" placeholder="ban@email.com">
+      <p class="error-text hidden text-xs text-clay mt-1" data-for="login-email"></p>
+    </div>
+    <div>
+      <label for="login-password" class="block text-sm font-medium mb-1">Mật khẩu</label>
+      <input id="login-password" type="password" autocomplete="current-password" required minlength="6" class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen" placeholder="••••••••">
+      <p class="error-text hidden text-xs text-clay mt-1" data-for="login-password"></p>
+    </div>
+    <button type="submit" class="w-full bg-inkgreen text-parchment font-semibold py-3 rounded-sm hover:bg-inkgreenlight transition text-sm">Đăng nhập</button>
+    <p class="text-xs text-center text-charcoal/50">Đây là biểu mẫu minh họa cho mục đích học tập, không kết nối máy chủ thật.</p>
+  </form>
+
+  <!-- Đăng ký -->
+  <form id="panel-register" role="tabpanel" aria-labelledby="tab-register" class="hidden bg-white border border-sage rounded-sm p-6 space-y-4" novalidate>
+    <div>
+      <label for="register-name" class="block text-sm font-medium mb-1">Họ và tên</label>
+      <input id="register-name" type="text" autocomplete="name" required minlength="2" class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen" placeholder="Nguyễn Văn A">
+      <p class="error-text hidden text-xs text-clay mt-1" data-for="register-name"></p>
+    </div>
+    <div>
+      <label for="register-email" class="block text-sm font-medium mb-1">Email</label>
+      <input id="register-email" type="email" autocomplete="email" required class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen" placeholder="ban@email.com">
+      <p class="error-text hidden text-xs text-clay mt-1" data-for="register-email"></p>
+    </div>
+    <div>
+      <label for="register-password" class="block text-sm font-medium mb-1">Mật khẩu</label>
+      <input id="register-password" type="password" autocomplete="new-password" required minlength="6" class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen" placeholder="Tối thiểu 6 ký tự">
+      <p class="error-text hidden text-xs text-clay mt-1" data-for="register-password"></p>
+    </div>
+    <div>
+      <label for="register-confirm" class="block text-sm font-medium mb-1">Nhập lại mật khẩu</label>
+      <input id="register-confirm" type="password" autocomplete="new-password" required class="w-full border border-sage rounded-sm px-3 py-2 text-sm outline-none focus:border-inkgreen" placeholder="••••••••">
+      <p class="error-text hidden text-xs text-clay mt-1" data-for="register-confirm"></p>
+    </div>
+    <label class="flex items-start gap-2 text-xs text-charcoal/70">
+      <input id="register-terms" type="checkbox" required class="mt-0.5">
+      Tôi đồng ý với Điều khoản sử dụng và Chính sách bảo mật của Tín Chỉ.
+      <span></span>
+    </label>
+    <p class="error-text hidden text-xs text-clay" data-for="register-terms"></p>
+    <button type="submit" class="w-full bg-inkgreen text-parchment font-semibold py-3 rounded-sm hover:bg-inkgreenlight transition text-sm">Tạo tài khoản miễn phí</button>
+    <p class="text-xs text-center text-charcoal/50">Đây là biểu mẫu minh họa cho mục đích học tập, không kết nối máy chủ thật.</p>
+  </form>
+</main>
+
+<footer class="bg-parchmentdeep border-t border-sage/60 mt-10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-10 text-center text-xs text-charcoal/60">
+    © <span class="current-year"></span> Tín Chỉ — Dự án học thuật, môn Thiết kế Web (INTE03010).
+  </div>
+</footer>
+
+<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-white border-2 px-5 py-3 rounded-sm shadow-xl text-sm font-medium z-50" role="status" aria-live="polite">
+  <span id="toast-text"></span>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+  const tabLogin = document.getElementById('tab-login');
+  const tabRegister = document.getElementById('tab-register');
+  const panelLogin = document.getElementById('panel-login');
+  const panelRegister = document.getElementById('panel-register');
+
+  function showTab(tab){
+    const isLogin = tab === 'login';
+    tabLogin.setAttribute('aria-selected', String(isLogin));
+    tabRegister.setAttribute('aria-selected', String(!isLogin));
+    tabLogin.classList.toggle('bg-inkgreen', isLogin);
+    tabLogin.classList.toggle('text-parchment', isLogin);
+    tabLogin.classList.toggle('text-charcoal/70', !isLogin);
+    tabRegister.classList.toggle('bg-inkgreen', !isLogin);
+    tabRegister.classList.toggle('text-parchment', !isLogin);
+    tabRegister.classList.toggle('text-charcoal/70', isLogin);
+    panelLogin.classList.toggle('hidden', !isLogin);
+    panelRegister.classList.toggle('hidden', isLogin);
+  }
+  tabLogin.addEventListener('click', () => showTab('login'));
+  tabRegister.addEventListener('click', () => showTab('register'));
+  if(window.location.hash === '#register') showTab('register');
+
+  function setError(inputId, message){
+    const errEl = document.querySelector(`.error-text[data-for="${inputId}"]`);
+    const input = document.getElementById(inputId);
+    if(message){
+      errEl.textContent = message;
+      errEl.classList.remove('hidden');
+      input?.classList.add('border-clay');
+    }else{
+      errEl.classList.add('hidden');
+      input?.classList.remove('border-clay');
+    }
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  document.getElementById('panel-login').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+    let valid = true;
+
+    if(!emailPattern.test(email)){ setError('login-email', 'Vui lòng nhập email hợp lệ.'); valid = false; }
+    else setError('login-email', '');
+
+    if(password.length < 6){ setError('login-password', 'Mật khẩu cần tối thiểu 6 ký tự.'); valid = false; }
+    else setError('login-password', '');
+
+    if(!valid) return;
+
+    LMS_STORE.setSession({ name: email.split('@')[0], email });
+    showToast('Đăng nhập thành công! Đang chuyển đến học bạ của bạn…');
+    setTimeout(() => window.location.href = 'progress.html', 1000);
+  });
+
+  document.getElementById('panel-register').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('register-name').value.trim();
+    const email = document.getElementById('register-email').value.trim();
+    const password = document.getElementById('register-password').value;
+    const confirm = document.getElementById('register-confirm').value;
+    const terms = document.getElementById('register-terms').checked;
+    let valid = true;
+
+    if(name.length < 2){ setError('register-name', 'Vui lòng nhập họ tên đầy đủ.'); valid = false; }
+    else setError('register-name', '');
+
+    if(!emailPattern.test(email)){ setError('register-email', 'Vui lòng nhập email hợp lệ.'); valid = false; }
+    else setError('register-email', '');
+
+    if(password.length < 6){ setError('register-password', 'Mật khẩu cần tối thiểu 6 ký tự.'); valid = false; }
+    else setError('register-password', '');
+
+    if(confirm !== password || !confirm){ setError('register-confirm', 'Mật khẩu nhập lại không khớp.'); valid = false; }
+    else setError('register-confirm', '');
+
+    if(!terms){ setError('register-terms', 'Bạn cần đồng ý điều khoản để tiếp tục.'); valid = false; }
+    else setError('register-terms', '');
+
+    if(!valid) return;
+
+    LMS_STORE.setSession({ name, email });
+    showToast('Tạo tài khoản thành công! Chào mừng bạn đến với Tín Chỉ.');
+    setTimeout(() => window.location.href = 'courses.html', 1000);
+  });
+</script>
+</body>
+</html>

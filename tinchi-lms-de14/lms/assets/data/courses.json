@@ -1,0 +1,321 @@
+[
+  {
+    "id": "web-301",
+    "code": "WEB-301",
+    "title": "Lập trình Web Front-end với HTML, CSS & JavaScript",
+    "field": "Công nghệ",
+    "level": "Cơ bản",
+    "instructor": "Nguyễn Minh Khang",
+    "instructorTitle": "Front-end Engineer, 8 năm kinh nghiệm",
+    "duration": 32,
+    "rating": 4.8,
+    "students": 2140,
+    "price": 0,
+    "thumbnail": "https://picsum.photos/seed/web301/640/420",
+    "shortDesc": "Xây dựng nền tảng vững chắc về HTML semantic, CSS hiện đại và JavaScript ES6+ qua các bài tập thực chiến.",
+    "longDesc": "Khóa học dẫn nhập từ con số 0, giúp bạn dựng được một trang web hoàn chỉnh: cấu trúc nội dung bằng HTML ngữ nghĩa, tạo kiểu với CSS/Flexbox/Grid, và xử lý tương tác bằng JavaScript. Mỗi chương đều có bài tập áp dụng ngay vào một dự án portfolio cá nhân.",
+    "syllabus": [
+      {
+        "title": "Chương 1 — Nền tảng HTML ngữ nghĩa",
+        "lessons": [
+          {"id": "w301-1-1", "title": "Cấu trúc tài liệu & thẻ ngữ nghĩa", "type": "video", "duration": 18},
+          {"id": "w301-1-2", "title": "SEO cơ bản: meta, OpenGraph, heading", "type": "video", "duration": 22},
+          {"id": "w301-1-3", "title": "Bài tập: dựng trang giới thiệu cá nhân", "type": "reading", "duration": 15}
+        ]
+      },
+      {
+        "title": "Chương 2 — CSS & bố cục responsive",
+        "lessons": [
+          {"id": "w301-2-1", "title": "Box model, Flexbox căn bản", "type": "video", "duration": 25},
+          {"id": "w301-2-2", "title": "CSS Grid cho bố cục trang", "type": "video", "duration": 28},
+          {"id": "w301-2-3", "title": "Breakpoint & thiết kế mobile-first", "type": "video", "duration": 20}
+        ]
+      },
+      {
+        "title": "Chương 3 — JavaScript tương tác",
+        "lessons": [
+          {"id": "w301-3-1", "title": "DOM & sự kiện", "type": "video", "duration": 26},
+          {"id": "w301-3-2", "title": "Fetch API & xử lý JSON", "type": "video", "duration": 24},
+          {"id": "w301-3-3", "title": "Dự án tổng kết", "type": "reading", "duration": 30}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ds-204",
+    "code": "DS-204",
+    "title": "Phân tích dữ liệu với Python cho người mới bắt đầu",
+    "field": "Dữ liệu",
+    "level": "Cơ bản",
+    "instructor": "Trần Thị Hoài An",
+    "instructorTitle": "Data Analyst tại fintech",
+    "duration": 28,
+    "rating": 4.6,
+    "students": 1560,
+    "price": 0,
+    "thumbnail": "https://picsum.photos/seed/ds204/640/420",
+    "shortDesc": "Làm chủ Pandas, trực quan hoá dữ liệu và tư duy phân tích thông qua các bộ dữ liệu thực tế.",
+    "longDesc": "Khóa học tập trung vào kỹ năng thực hành: đọc, làm sạch, biến đổi và trực quan hoá dữ liệu bằng Python. Học viên sẽ hoàn thành 3 dự án phân tích nhỏ dựa trên dữ liệu mở.",
+    "syllabus": [
+      {
+        "title": "Chương 1 — Nhập môn Python cho dữ liệu",
+        "lessons": [
+          {"id": "ds204-1-1", "title": "Cú pháp Python cơ bản", "type": "video", "duration": 20},
+          {"id": "ds204-1-2", "title": "Cấu trúc dữ liệu: list, dict", "type": "video", "duration": 18}
+        ]
+      },
+      {
+        "title": "Chương 2 — Pandas & làm sạch dữ liệu",
+        "lessons": [
+          {"id": "ds204-2-1", "title": "DataFrame & Series", "type": "video", "duration": 24},
+          {"id": "ds204-2-2", "title": "Xử lý dữ liệu thiếu, trùng lặp", "type": "video", "duration": 22}
+        ]
+      },
+      {
+        "title": "Chương 3 — Trực quan hoá",
+        "lessons": [
+          {"id": "ds204-3-1", "title": "Biểu đồ với Matplotlib", "type": "video", "duration": 26},
+          {"id": "ds204-3-2", "title": "Dự án: phân tích dữ liệu bán hàng", "type": "reading", "duration": 35}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ux-150",
+    "code": "UX-150",
+    "title": "Thiết kế UI/UX với Figma từ A đến Z",
+    "field": "Thiết kế",
+    "level": "Cơ bản",
+    "instructor": "Lê Phương Thảo",
+    "instructorTitle": "Product Designer",
+    "duration": 24,
+    "rating": 4.9,
+    "students": 3020,
+    "price": 0,
+    "thumbnail": "https://picsum.photos/seed/ux150/640/420",
+    "shortDesc": "Từ wireframe đến prototype tương tác — quy trình thiết kế sản phẩm số chuẩn ngành bằng Figma.",
+    "longDesc": "Khóa học đi qua toàn bộ quy trình thiết kế UI/UX: nghiên cứu người dùng, wireframe, design system, đến prototype có thể test thử với người dùng thật.",
+    "syllabus": [
+      {
+        "title": "Chương 1 — Tư duy UX",
+        "lessons": [
+          {"id": "ux150-1-1", "title": "Nghiên cứu người dùng & persona", "type": "video", "duration": 19},
+          {"id": "ux150-1-2", "title": "Information architecture", "type": "video", "duration": 17}
+        ]
+      },
+      {
+        "title": "Chương 2 — Thực hành Figma",
+        "lessons": [
+          {"id": "ux150-2-1", "title": "Component & Auto Layout", "type": "video", "duration": 23},
+          {"id": "ux150-2-2", "title": "Design tokens & Design System", "type": "video", "duration": 21}
+        ]
+      },
+      {
+        "title": "Chương 3 — Prototype & kiểm thử",
+        "lessons": [
+          {"id": "ux150-3-1", "title": "Dựng prototype tương tác", "type": "video", "duration": 25},
+          {"id": "ux150-3-2", "title": "Usability testing cơ bản", "type": "reading", "duration": 20}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mkt-220",
+    "code": "MKT-220",
+    "title": "Digital Marketing thực chiến cho người mới",
+    "field": "Marketing",
+    "level": "Trung cấp",
+    "instructor": "Phạm Đức Anh",
+    "instructorTitle": "Growth Marketer",
+    "duration": 20,
+    "rating": 4.5,
+    "students": 980,
+    "price": 0,
+    "thumbnail": "https://picsum.photos/seed/mkt220/640/420",
+    "shortDesc": "Xây dựng chiến dịch marketing đa kênh: SEO, mạng xã hội, email và đo lường hiệu quả.",
+    "longDesc": "Khóa học cung cấp khung tư duy và công cụ thực tế để lên kế hoạch, triển khai và đo lường một chiến dịch digital marketing hoàn chỉnh.",
+    "syllabus": [
+      {
+        "title": "Chương 1 — Nền tảng Digital Marketing",
+        "lessons": [
+          {"id": "mkt220-1-1", "title": "Customer journey & funnel", "type": "video", "duration": 18},
+          {"id": "mkt220-1-2", "title": "SEO căn bản", "type": "video", "duration": 22}
+        ]
+      },
+      {
+        "title": "Chương 2 — Kênh & nội dung",
+        "lessons": [
+          {"id": "mkt220-2-1", "title": "Chiến lược nội dung mạng xã hội", "type": "video", "duration": 20},
+          {"id": "mkt220-2-2", "title": "Email marketing & automation", "type": "video", "duration": 19}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "web-415",
+    "code": "WEB-415",
+    "title": "JavaScript nâng cao & xây dựng ứng dụng tương tác",
+    "field": "Công nghệ",
+    "level": "Nâng cao",
+    "instructor": "Nguyễn Minh Khang",
+    "instructorTitle": "Front-end Engineer, 8 năm kinh nghiệm",
+    "duration": 36,
+    "rating": 4.7,
+    "students": 870,
+    "price": 0,
+    "thumbnail": "https://picsum.photos/seed/web415/640/420",
+    "shortDesc": "Đào sâu closures, async/await, design pattern và tối ưu hiệu năng JavaScript.",
+    "longDesc": "Dành cho người đã có nền tảng JavaScript, khóa học đi sâu vào cơ chế hoạt động của ngôn ngữ, các pattern phổ biến và kỹ thuật tối ưu hiệu năng cho ứng dụng thực tế.",
+    "syllabus": [
+      {
+        "title": "Chương 1 — Cơ chế JavaScript",
+        "lessons": [
+          {"id": "w415-1-1", "title": "Closures & scope", "type": "video", "duration": 24},
+          {"id": "w415-1-2", "title": "Event loop & bất đồng bộ", "type": "video", "duration": 27}
+        ]
+      },
+      {
+        "title": "Chương 2 — Design pattern",
+        "lessons": [
+          {"id": "w415-2-1", "title": "Module pattern & Observer", "type": "video", "duration": 25},
+          {"id": "w415-2-2", "title": "State management cơ bản", "type": "video", "duration": 23}
+        ]
+      },
+      {
+        "title": "Chương 3 — Tối ưu hiệu năng",
+        "lessons": [
+          {"id": "w415-3-1", "title": "Debounce, throttle, lazy-load", "type": "video", "duration": 22},
+          {"id": "w415-3-2", "title": "Dự án: ứng dụng quản lý công việc", "type": "reading", "duration": 40}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "biz-110",
+    "code": "BIZ-110",
+    "title": "Kỹ năng quản lý dự án cho người mới làm leader",
+    "field": "Kinh doanh",
+    "level": "Cơ bản",
+    "instructor": "Đỗ Thanh Vân",
+    "instructorTitle": "Project Manager, PMP",
+    "duration": 16,
+    "rating": 4.4,
+    "students": 540,
+    "price": 0,
+    "thumbnail": "https://picsum.photos/seed/biz110/640/420",
+    "shortDesc": "Lập kế hoạch, phân chia công việc và quản lý rủi ro cho dự án quy mô nhỏ và vừa.",
+    "longDesc": "Khóa học trang bị tư duy quản lý dự án cơ bản: lập kế hoạch, theo dõi tiến độ, quản lý rủi ro và giao tiếp hiệu quả với các bên liên quan.",
+    "syllabus": [
+      {
+        "title": "Chương 1 — Khởi động dự án",
+        "lessons": [
+          {"id": "biz110-1-1", "title": "Xác định phạm vi & mục tiêu", "type": "video", "duration": 16},
+          {"id": "biz110-1-2", "title": "Lập kế hoạch & timeline", "type": "video", "duration": 18}
+        ]
+      },
+      {
+        "title": "Chương 2 — Thực thi & theo dõi",
+        "lessons": [
+          {"id": "biz110-2-1", "title": "Quản lý rủi ro cơ bản", "type": "video", "duration": 17},
+          {"id": "biz110-2-2", "title": "Họp & báo cáo tiến độ", "type": "reading", "duration": 14}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ds-330",
+    "code": "DS-330",
+    "title": "Machine Learning nhập môn với scikit-learn",
+    "field": "Dữ liệu",
+    "level": "Trung cấp",
+    "instructor": "Trần Thị Hoài An",
+    "instructorTitle": "Data Analyst tại fintech",
+    "duration": 30,
+    "rating": 4.7,
+    "students": 1120,
+    "price": 0,
+    "thumbnail": "https://picsum.photos/seed/ds330/640/420",
+    "shortDesc": "Hiểu và áp dụng các mô hình học máy phổ biến vào bài toán dự đoán thực tế.",
+    "longDesc": "Khóa học giới thiệu các thuật toán học máy nền tảng: hồi quy, phân loại, cây quyết định, và cách đánh giá mô hình bằng scikit-learn qua các bộ dữ liệu thật.",
+    "syllabus": [
+      {
+        "title": "Chương 1 — Nền tảng Machine Learning",
+        "lessons": [
+          {"id": "ds330-1-1", "title": "Học có giám sát vs không giám sát", "type": "video", "duration": 20},
+          {"id": "ds330-1-2", "title": "Hồi quy tuyến tính", "type": "video", "duration": 24}
+        ]
+      },
+      {
+        "title": "Chương 2 — Phân loại & đánh giá",
+        "lessons": [
+          {"id": "ds330-2-1", "title": "Cây quyết định & Random Forest", "type": "video", "duration": 26},
+          {"id": "ds330-2-2", "title": "Đánh giá mô hình: precision, recall", "type": "video", "duration": 22}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ux-265",
+    "code": "UX-265",
+    "title": "Thiết kế hệ thống (Design System) chuyên sâu",
+    "field": "Thiết kế",
+    "level": "Nâng cao",
+    "instructor": "Lê Phương Thảo",
+    "instructorTitle": "Product Designer",
+    "duration": 22,
+    "rating": 4.8,
+    "students": 410,
+    "price": 0,
+    "thumbnail": "https://picsum.photos/seed/ux265/640/420",
+    "shortDesc": "Xây dựng và vận hành design system cho sản phẩm số nhiều nền tảng.",
+    "longDesc": "Dành cho designer đã có kinh nghiệm, khóa học hướng dẫn xây dựng design token, component library và quy trình quản trị design system trong tổ chức.",
+    "syllabus": [
+      {
+        "title": "Chương 1 — Nền tảng Design Token",
+        "lessons": [
+          {"id": "ux265-1-1", "title": "Token màu, typography, spacing", "type": "video", "duration": 21},
+          {"id": "ux265-1-2", "title": "Quản trị phiên bản design system", "type": "video", "duration": 19}
+        ]
+      },
+      {
+        "title": "Chương 2 — Component Library",
+        "lessons": [
+          {"id": "ux265-2-1", "title": "Xây thư viện component tái sử dụng", "type": "video", "duration": 25},
+          {"id": "ux265-2-2", "title": "Tài liệu hoá cho team kỹ thuật", "type": "reading", "duration": 18}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mkt-305",
+    "code": "MKT-305",
+    "title": "Phân tích & đo lường hiệu quả Marketing bằng dữ liệu",
+    "field": "Marketing",
+    "level": "Nâng cao",
+    "instructor": "Phạm Đức Anh",
+    "instructorTitle": "Growth Marketer",
+    "duration": 18,
+    "rating": 4.6,
+    "students": 320,
+    "price": 0,
+    "thumbnail": "https://picsum.photos/seed/mkt305/640/420",
+    "shortDesc": "Đọc số liệu, xây dashboard và ra quyết định marketing dựa trên dữ liệu thật.",
+    "longDesc": "Khóa học nâng cao dành cho marketer muốn chuyển sang tư duy data-driven: thiết lập chỉ số đo lường, xây dashboard và phân tích ROI chiến dịch.",
+    "syllabus": [
+      {
+        "title": "Chương 1 — Chỉ số & dashboard",
+        "lessons": [
+          {"id": "mkt305-1-1", "title": "Chọn chỉ số đo lường phù hợp", "type": "video", "duration": 16},
+          {"id": "mkt305-1-2", "title": "Xây dashboard cơ bản", "type": "video", "duration": 20}
+        ]
+      },
+      {
+        "title": "Chương 2 — Phân tích ROI",
+        "lessons": [
+          {"id": "mkt305-2-1", "title": "Tính ROI chiến dịch", "type": "video", "duration": 18},
+          {"id": "mkt305-2-2", "title": "Dự án: báo cáo chiến dịch thực tế", "type": "reading", "duration": 25}
+        ]
+      }
+    ]
+  }
+]
